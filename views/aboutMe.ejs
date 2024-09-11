@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bimbok Mukherjee - Tech Innovator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --text-color: #2d3436;
+            --bg-color: #f7f7f7;
+            --accent-color: #feca57;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 5s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+        }
+
+        .ll {
+            display: flex;
+            list-style: none;
+        }
+
+        .navItem {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navItem::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .navItem:hover::after {
+            transform: scaleX(1);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 8rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        section {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-color) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0.1;
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        section:hover h2::after {
+            width: 100px;
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInUp {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-float {
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="fadeInUp">Bimbok Mukherjee</h1>
+        <nav class="navbar">
+            <ul class="ll">
+                <li class="navItem fadeInUp"><a href="#about"><i class="fas fa-user icon-float"></i> About</a></li>
+                <li class="navItem fadeInUp"><a href="#projects"><i class="fas fa-code icon-float"></i> Projects</a></li>
+                <li class="navItem fadeInUp"><a href="#skills"><i class="fas fa-cogs icon-float"></i> Skills</a></li>
+                <li class="navItem fadeInUp"><a href="#contact"><i class="fas fa-envelope icon-float"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to My World</h2>
+            <p>I'm Bimbok Mukherjee, a 20-year-old tech enthusiast and innovator from Kolkata, India.</p>
+            <p>Join me on my journey through the exciting realm of web development and cybersecurity.</p>
+        </section>
+
+        <section id="about">
+            <h2>My Story</h2>
+            <p>Born and raised in the vibrant city of Kolkata, I discovered my passion for coding at an early age. What started as tinkering with HTML soon blossomed into a full-fledged love affair with web development.</p>
+            <p>Currently pursuing a B.Tech in Information Technology, I've made it my mission to push the boundaries of what's possible in the digital world. My journey has been marked by countless lines of code, sleepless nights of debugging, and the thrill of bringing innovative ideas to life.</p>
+            <p>As a staunch advocate for digital privacy and security, I've channeled my expertise into creating Narrative Nexus - a platform that marries the art of storytelling with cutting-edge encryption techniques. It's my way of ensuring that everyone has a safe space to express themselves online.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <h3>Narrative Nexus</h3>
+            <p>A secure blog post web app that prioritizes user privacy through end-to-end encryption and robust authentication. It's my vision of a platform where people can share their thoughts without compromising their security.</p>
+            <h3>Open Source Contributions</h3>
+            <p>I'm an active contributor to various GitHub projects, focusing on improving security features and optimizing performance in web applications. My contributions reflect my commitment to the open-source community and my belief in collaborative innovation.</p>
+            <a href="https://github.com/bimbok" class="btn">View on GitHub</a>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Expertise</h2>
+            <p>Full-Stack Development: Proficient in creating end-to-end web solutions.</p>
+            <p>Languages: JavaScript, Python, Java, HTML/CSS</p>
+            <p>Frameworks: React, Node.js, Express.js</p>
+            <p>Database: MongoDB, MySQL</p>
+            <p>Security: Encryption algorithms, Authentication systems</p>
+            <p>Version Control: Git</p>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p>I'm always excited to collaborate on new projects or discuss the latest in tech. Feel free to reach out!</p>
+            <p>Email: bimbokmkj@gmail.com</p>
+            <p>Phone: +91 9434478350</p>
+            <p>Location: Kolkata, India</p>
+            <a href="mailto: bimbokmkj@gmail.com" class="btn">Send Me a Message</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Bimbok Mukherjee. Innovating for a secure digital future.</p>
+    </footer>
+
+    <script>
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Add fade-in effect to sections
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add hover effect to buttons
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseover', () => {
+                btn.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            btn.addEventListener('mouseout', () => {
+                btn.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "v3",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "20.5.1"
+  },
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.10",
+    "express": "^5.0.0",
+    "mongoose": "^8.6.1",
+    "nodemon": "^3.1.4",
+    "v3": "file:"
+  }
+}
