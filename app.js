@@ -24,7 +24,7 @@ mongoose.connect('mongodb+srv://admin-bimbok:bimbok123@cluster0.1w1cxot.mongodb.
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    email: String,
+    email: { type: String, unique: true },
     password: String
 });
 
@@ -82,6 +82,12 @@ app.post("/register", async (req, res) => {
     }
 
     try {
+        // Check if a user with this email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).send("Email already registered");
+        }
+
         // Hash the password before saving
         const hashedPassword = await bcrypt.hash(password, 10);
 
